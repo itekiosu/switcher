@@ -1,4 +1,4 @@
-﻿using AkemiSwitcher.Properties;
+﻿using ItekiSwitcher.Properties;
 using KaedeCore.Objects;
 using System;
 using System.IO;
@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Media;
 
-namespace AkemiSwitcher
+namespace ItekiSwitcher
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -15,7 +15,7 @@ namespace AkemiSwitcher
     public partial class App : Application
     {
         Switcher switcher = new Switcher();
-        AkemiSwitcherUI uiRef;
+        ItekiSwitcherUI uiRef;
         KaedeEngine.KaedeEngine Translation;
 
         SwitcherMessageEvent lastEv;
@@ -25,7 +25,7 @@ namespace AkemiSwitcher
             AppDomain.CurrentDomain.AssemblyResolve += OnResolveAssembly;
             Translation = KaedeEngine.KaedeEngine.LoadLocale(Settings.Default.PreferredLocale);
 
-            AkemiSwitcherUI window = new AkemiSwitcherUI();
+            ItekiSwitcherUI window = new ItekiSwitcherUI();
             uiRef = window;
 
             int sIndex = 0;
@@ -62,13 +62,6 @@ namespace AkemiSwitcher
         public void PerformSwitcherAction()
         {
             _ = switcher.PerformSwitch();
-        }
-
-        public void UpdateMode()
-        {
-            uiRef?.Hide();
-            AkemiSwitcherUpdate u = new AkemiSwitcherUpdate();
-            u.Show();
         }
 
         public void onSwitcherMessage(object sender, SwitcherMessageEvent e)

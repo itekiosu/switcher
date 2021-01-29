@@ -9,11 +9,11 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace AkemiSwitcher
+namespace ItekiSwitcher
 {
     #region Errors
 #if !ONLINE_SERVERS && !FALLBACK
-#error AkemiSwitcher can't compile: You need to define a proper way to get the server IP: either you use the FALLBACK method, or you use ONLINE_SERVERS(from JSON, you can back it up with FALLBACK).
+#error ItekiSwitcher can't compile: You need to define a proper way to get the server IP: either you use the FALLBACK method, or you use ONLINE_SERVERS(from JSON, you can back it up with FALLBACK).
 #endif
     #endregion
 
@@ -45,7 +45,7 @@ namespace AkemiSwitcher
         public void CertificateSetup()
         {
             if (certificateManager == null) certificateManager = new CertificateManager {
-                ServerCertificate = new X509Certificate2(Properties.Resources.serverCertificate)
+                ServerCertificate = new X509Certificate2(Properties.Resources.iteki)
             };
             if(!certificateManager.checkForCertificate())
                 certificateManager.installCertificate();
@@ -109,7 +109,7 @@ namespace AkemiSwitcher
             JToken token = JObject.Parse(serverOutput);
 
             string target = (string) token.SelectToken("target");
-            if(target == null || !target.Equals("AkemiSwitcher"))
+            if(target == null || !target.Equals("Iteki"))
             {
                 OnSwitcherMessage?.Invoke(null, new SwitcherMessageEvent()
                 {
@@ -202,78 +202,6 @@ namespace AkemiSwitcher
             {
                 eventType = SwitcherEvent.PleaseWait
             });
-
-#if UPDATABLE || TAMPER_CHECK
-            if (File.Exists(Path.Combine(System.Windows.Forms.Application.StartupPath, "AkemiSwitcher.Update.tmp"))) File.Delete(Path.Combine(System.Windows.Forms.Application.StartupPath, "AkemiSwitcher.Update.tmp"));
-
-            var webClient = new WebClient();
-
-            ServicePointManager.Expect100Continue = true;
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
-            string serverOutput = webClient.DownloadString(BuildInfo.UpdateVersionList + "?" + new Random().Next());
-
-            JToken token = JObject.Parse(serverOutput);
-
-            string target = (string) token.SelectToken("target");
-            if(target == null || !target.Equals("AkemiSwitcher"))
-            {
-                OnSwitcherMessage?.Invoke(null, new SwitcherMessageEvent()
-                {
-                    eventType = SwitcherEvent.ServerError
-                });
-            }
-
-            JToken data = token.SelectToken("data");
-            if (data == null)
-            {
-                OnSwitcherMessage?.Invoke(null, new SwitcherMessageEvent()
-                {
-                    eventType = SwitcherEvent.ServerError
-                });
-            }
-
-            JToken versions = data.SelectToken("versions");
-            if(versions == null)
-            {
-                OnSwitcherMessage?.Invoke(null, new SwitcherMessageEvent()
-                {
-                    eventType = SwitcherEvent.ServerError
-                });
-            }
-
-            string latestVersionString = (string) versions.ToList().OrderByDescending(x => int.Parse(((string)x.SelectToken("versionCode")).Replace(".", ""))).First().SelectToken("versionCode");
-            int latestVersion = int.Parse(latestVersionString.Replace(".", ""));
-            int currentVersion = int.Parse(System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString().Replace(".", ""));
-
-#if TAMPER_CHECK
-            foreach (JToken s in versions)
-            {
-                string version = (string) s.SelectToken("versionCode");
-                if(version.Equals(System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString()))
-                {
-                    string hash = (string)s.SelectToken("hash");
-                    string versionData = (string)s.SelectToken("versionData");
-
-                    if(!hash.Equals(Utils.GetSwitcherHash()) || !versionData.Equals(Utils.GetVersionHash()))
-                    {
-                        MessageBox.Show(((App)App.Current).GetTranslationString("warn_modified"), ((App)App.Current).GetTranslationString("title_warn_modified"), MessageBoxButton.OK, MessageBoxImage.Error);
-                        ((App)App.Current).UpdateMode();
-                        return;
-                    }
-                }
-            }
-#endif
-
-            if (latestVersion > currentVersion)
-            {
-                MessageBoxResult x = MessageBox.Show(string.Format(((App)App.Current).GetTranslationString("warn_newVersion"), System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString(), latestVersionString), ((App)App.Current).GetTranslationString("title_warn_newVersion"), MessageBoxButton.YesNo, MessageBoxImage.Information);
-                if(x == MessageBoxResult.Yes)
-                {
-                    ((App)App.Current).UpdateMode();
-                }
-            }
-#endif
 
             if (!Utils.IsAdministrator())
             {

@@ -2,16 +2,16 @@
 using System.Windows;
 using System.Windows.Media;
 
-namespace AkemiSwitcher
+namespace ItekiSwitcher
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class AkemiSwitcherUI : Window
+    public partial class ItekiSwitcherUI : Window
     {
 
 
-        public AkemiSwitcherUI()
+        public ItekiSwitcherUI()
         {
             InitializeComponent();
         }

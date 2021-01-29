@@ -1,4 +1,4 @@
-﻿namespace AkemiSwitcher
+﻿namespace ItekiSwitcher
 {
     internal class HostEntry
     {

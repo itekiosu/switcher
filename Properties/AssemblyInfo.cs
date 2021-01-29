@@ -7,13 +7,13 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AkemiSwitcher")]
-[assembly: AssemblyDescription("AkemiSwitcher")]
+[assembly: AssemblyTitle("ItekiSwitcher")]
+[assembly: AssemblyDescription("ItekiSwitcher")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("osu!katakuna")]
-[assembly: AssemblyProduct("AkemiSwitcher")]
-[assembly: AssemblyCopyright("osu!katakuna")]
-[assembly: AssemblyTrademark("osu!katakuna")]
+[assembly: AssemblyCompany("Iteki and osu!katakuna")]
+[assembly: AssemblyProduct("ItekiSwitcher")]
+[assembly: AssemblyCopyright("Iteki and osu!katakuna")]
+[assembly: AssemblyTrademark("Iteki and osu!katakuna")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
