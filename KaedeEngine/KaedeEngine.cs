@@ -16,7 +16,7 @@ namespace KaedeEngine
         // optimised function to not take up memory; loads only required locales
         public static KaedeEngine LoadLocale(string TargetLocale)
         {
-            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("AkemiSwitcher.Translation.AkemiSwitcher.ktf");
+            Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("ItekiSwitcher.Translation.ItekiSwitcher.ktf");
             KaedeEngine instance = new KaedeEngine();
 
             BinaryReader b = new BinaryReader(stream);

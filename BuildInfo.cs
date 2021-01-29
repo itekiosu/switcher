@@ -1,16 +1,13 @@
-﻿namespace AkemiSwitcher
+﻿namespace ItekiSwitcher
 {
     class BuildInfo
     {
-        public static string ServerName          = "Katakuna";
+        public static string ServerName          = "Iteki";
 #if FALLBACK
-        public static string StaticServerIP      = "51.83.241.127";
+        public static string StaticServerIP      = "3.133.82.130";
 #endif
 #if ONLINE_SERVERS
-        public static string SwitcherServerList  = "https://raw.githubusercontent.com/osu-katakuna/common/master/AkemiSwitcher.Servers.json";
-#endif
-#if UPDATABLE
-        public static string UpdateVersionList   = "https://raw.githubusercontent.com/osu-katakuna/common/master/AkemiSwitcher.Mirai.json";
+        public static string SwitcherServerList  = "http://switcher.iteki.pw/json";
 #endif
     }
 }

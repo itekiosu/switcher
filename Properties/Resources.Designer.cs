@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AkemiSwitcher.Properties {
+namespace ItekiSwitcher.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace AkemiSwitcher.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AkemiSwitcher.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ItekiSwitcher.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,32 +61,12 @@ namespace AkemiSwitcher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap logoSmall {
-            get {
-                object obj = ResourceManager.GetObject("logoSmall", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] serverCertificate {
+        public static byte[] iteki {
             get {
-                object obj = ResourceManager.GetObject("serverCertificate", resourceCulture);
+                object obj = ResourceManager.GetObject("iteki", resourceCulture);
                 return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap UpdateBG {
-            get {
-                object obj = ResourceManager.GetObject("UpdateBG", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
