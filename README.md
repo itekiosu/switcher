@@ -1,3 +1,5 @@
+# THIS IS NO LONGER IN USE
+
 # Iteki Switcher
 The switcher for Iteki, based off AkemiSwitcher by osu!Katakuna.
 
